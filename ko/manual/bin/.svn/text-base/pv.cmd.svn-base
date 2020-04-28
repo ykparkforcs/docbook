@@ -1,0 +1,1 @@
+@start /D"%~d0%~p0..\docs\pdf" %1.pdf

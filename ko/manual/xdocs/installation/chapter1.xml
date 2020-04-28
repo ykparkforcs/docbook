@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="chapter1" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mml="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>설치 개요</title>
+
+  <para>본 장에서는 WebtoB의 특징과 설치 구성 요소에 대해 기술한다.</para>
+
+  <section>
+    <title>WebtoB 개념</title>
+
+    <para>WebtoB는 Web to Business의 약자로, 웹에서 브라우저의 요구를 처리하여 주는 서버용 소프트웨어이다. 웹
+    서버 시장의 약 60%를 상회하는 Apache와의 호환성을 위주로 더 나은 성능과 안정성, 그리고 보안성을 제공한다. 또한, 기존 웹
+    서버와의 차별을 위해 WebtoB만의 새로운 기능들을 추가하였다.</para>
+
+    <para>WebtoB에서는 다음과 같은 서비스를 제공한다.</para>
+
+    <para><itemizedlist>
+        <listitem>
+          <para>다양한 HTML 문서들의 처리</para>
+        </listitem>
+
+        <listitem>
+          <para>CGI 및 WBAPI 지원</para>
+        </listitem>
+
+        <listitem>
+          <para>SSI(Server Side Include) 지원</para>
+        </listitem>
+
+        <listitem>
+          <para>PHP 스크립트 언어 지원</para>
+        </listitem>
+
+        <listitem>
+          <para>JEUS 연동 / Tmax 연동</para>
+        </listitem>
+
+        <listitem>
+          <para>ACL(Access Control List) 및 SSL(Secure Sockets Layer) 등 다양한 보안
+          서비스 지원</para>
+        </listitem>
+
+        <listitem>
+          <para>Servlet 및 JSP 지원 (Standard Edition)</para>
+        </listitem>
+
+        <listitem>
+          <para>Load Balancing / Fail-Over (Standard Edition)</para>
+        </listitem>
+      </itemizedlist></para>
+  </section>
+
+  <section>
+    <title>설치 구성 요소</title>
+
+    <section>
+      <title>패키지 구성</title>
+
+      <para>정품으로 제공되는 WebtoB는 다음과 같이 구성되어 있다.</para>
+
+      <para><itemizedlist>
+          <listitem>
+            <para>WebtoB 제품 CD-ROM 1매</para>
+          </listitem>
+
+          <listitem>
+            <para>WebtoB 제품 라이선스 및 보증서</para>
+          </listitem>
+
+          <listitem>
+            <para>WebtoB 제품 매뉴얼</para>
+          </listitem>
+        </itemizedlist></para>
+
+      <para/>
+
+      <?dbfo-need height="10in" ?>
+    </section>
+
+    <section>
+      <title>평가판 소프트웨어의 배포</title>
+
+      <para>TmaxSoft는 인터넷을 통해 사용자가 직접 다운로드하여 테스트할 수 있는 기회를 제공하고 있다.</para>
+
+      <para>TmaxSoft 제품군을 미리 사용해 볼 수 있도록 평가 라이선스를 제공한다. 평가판은 기능상의 제한은 두지 않고
+      사용기간만 2개월로 제한하고 있다.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>제품 다운로드 및 기술 지원</para>
+
+          <para>아래 사이트에서 제품 다운로드 및 기술 지원을 받을 수 있다.</para>
+
+          <programlisting><link xlink:href="http://technet.tmax.co.kr"
+              xlink:show="new">http://technet.tmax.co.kr</link>   </programlisting>
+
+          <para/>
+        </listitem>
+      </itemizedlist>
+
+      <itemizedlist>
+        <listitem>
+          <para>데모 라이선스 발급</para>
+
+          <para>아래 사이트에 접속해서 데모 라이선스를 발급받을 수 있다.</para>
+
+          <para><programlisting><link xlink:href="http://technet.tmax.co.kr">http://technet.tmax.co.kr</link> &gt; <guibutton>[다운로드]</guibutton> &gt; <guibutton>[라이선스 신청]</guibutton></programlisting></para>
+        </listitem>
+      </itemizedlist>
+
+      <para/>
+
+      <para/>
+    </section>
+  </section>
+
+  <section>
+    <title>시스템 요구사항</title>
+
+    <para>다음은 WebtoB 전체 Installer 지원 플랫폼 정보 및 요구환경에 대한 설명이다.</para>
+
+    <para><informaltable colsep="1" frame="topbot" rowsep="1">
+        <tgroup cols="5">
+          <colspec align="left" colwidth="150"/>
+
+          <colspec align="left" colwidth="130"/>
+
+          <colspec align="left" colwidth="100" condition=""/>
+
+          <colspec align="left" colwidth="120"/>
+
+          <thead>
+            <row>
+              <entry>운영체제</entry>
+
+              <entry>CPU</entry>
+
+              <entry>메모리</entry>
+
+              <entry>CGI/WBAPI 사용</entry>
+
+              <entry>Servlet 사용</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry>IBM AIX V5.3/V6.1/V7.1 32bit/64bit</entry>
+
+              <entry>IBM PowerPC</entry>
+
+              <entry>512MB</entry>
+
+              <entry>IBM ANSI C</entry>
+
+              <entry>JDK 5.0 이상</entry>
+            </row>
+
+            <row>
+              <entry morerows="1">HP-UX 11.xx 32bit/64bit</entry>
+
+              <entry>HP PA-RISK</entry>
+
+              <entry>512MB</entry>
+
+              <entry>HP-UX ANSI C</entry>
+
+              <entry>JDK 5.0 이상</entry>
+            </row>
+
+            <row>
+              <entry>Intel Itanium</entry>
+
+              <entry>512MB</entry>
+
+              <entry>HP-UX ANSI C</entry>
+
+              <entry>JDK 5.0 이상</entry>
+            </row>
+
+            <row>
+              <entry>Linux K.2.4 이상 (32bit)</entry>
+
+              <entry>Intel i386 Processor</entry>
+
+              <entry>512MB</entry>
+
+              <entry>GNU ANSI C</entry>
+
+              <entry>JDK 5.0 이상</entry>
+            </row>
+
+            <row>
+              <entry>Linux K.2.6 이상 (64bit)</entry>
+
+              <entry>Intel Itanium</entry>
+
+              <entry>512MB</entry>
+
+              <entry>GNU ANSI C</entry>
+
+              <entry>JDK 5.0 이상</entry>
+            </row>
+
+            <row>
+              <entry>SunOS 5.8/5.9/5.10/5.11 32bit/64bit</entry>
+
+              <entry>UltraSPARC</entry>
+
+              <entry>512MB</entry>
+
+              <entry>SUN ANSI C</entry>
+
+              <entry>JDK 5.0 이상</entry>
+            </row>
+
+            <row>
+              <entry>SunOS 5.10 32bit/64bit</entry>
+
+              <entry>Intel i386 Processor</entry>
+
+              <entry>512MB</entry>
+
+              <entry>SUN ANSI C</entry>
+
+              <entry>JDK 5.0 이상</entry>
+            </row>
+
+            <row>
+              <entry>Windows 2000/XP/2003/7 32bit</entry>
+
+              <entry>Intel i386 Processor</entry>
+
+              <entry>512MB</entry>
+
+              <entry>Microsoft Visual 2008 이상</entry>
+
+              <entry>JDK 5.0 이상</entry>
+            </row>
+
+            <row>
+              <entry>Windows 2003/2008/7 64bit</entry>
+
+              <entry>Intel i386 Processor</entry>
+
+              <entry>512MB</entry>
+
+              <entry>Microsoft Visual 2008 이상</entry>
+
+              <entry>JDK 5.0 이상</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para/>
+  </section>
+</chapter>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mml="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>설치 전 준비사항</title>
+
+  <para>본 장에서는 설치 전에 준비해야 할 사항에 대해서 설명한다.</para>
+
+  <section>
+    <title>시스템 환경</title>
+
+    <para>WebtoB를 설치하기 전에 다음 사항을 확인한다.</para>
+
+    <para><itemizedlist>
+        <listitem>
+          <para>호스트 이름</para>
+
+          <para>호스트 이름은 라이선스를 요청하는 경우 필요한 정보이다.</para>
+
+          <para>다음의 3가지 방법 중 경우에 따라 적절한 방법을 선택하여 호스트의 이름을 확인할 수 있다.</para>
+
+          <para><itemizedlist>
+              <listitem>
+                <para>UNIX 시스템의 경우</para>
+
+                <para>uname –n 명령 또는 "/etc/hosts" 파일을 확인한다.</para>
+              </listitem>
+            </itemizedlist><itemizedlist>
+              <listitem>
+                <para>Windows 계열의 경우</para>
+
+                <para>시스템 환경변수를 확인한다.</para>
+              </listitem>
+            </itemizedlist><itemizedlist>
+              <listitem>
+                <para>WebtoB가 제공하는 유틸리티 프로그램을 이용</para>
+
+                <para>WebtoB 설치 경로의 '/license' 디렉터리에서
+                <guibutton>ncpu</guibutton>를 실행하여 정확한 호스트 이름(hostname)을 얻을 수
+                있다.</para>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+      </itemizedlist><itemizedlist>
+        <listitem>
+          <para>웹 서버를 기동할 때 부여될 포트 번호(기본값 : 80)</para>
+
+          <para>기본값으로 지정되는 80 포트는 'root' 사용자가 아니면 사용할 수 없다. 따라서, 'root' 계정이 아닌
+          사용자는 1024번 이후의 포트를 설정하여 사용해야 한다.</para>
+        </listitem>
+      </itemizedlist><itemizedlist>
+        <listitem>
+          <para>웹 서버를 기동할 때 계정(기본값 : root)</para>
+        </listitem>
+      </itemizedlist></para>
+
+    <para></para>
+
+    <section>
+      <title>호스트 이름</title>
+
+      <para>WebtoB를 정상적으로 기동시키기 위해서는 반드시 제품에 대한 라이선스가 필요하며, WebtoB 환경 파일을 설정해야
+      한다. WebtoB 환경 파일을 설정하려면 호스트 이름을 알아야 한다. WebtoB는 설치 과정에서 호스트 이름과 IP 주소를
+      자동으로 찾아내서 환경 파일에 등록한다.</para>
+
+      <para>다음은 SUN Solaris에서 시스템의 IP 주소와 호스트 이름을 찾는 방법에 대한 설명이다. 호스트 이름이
+      FQDN(Fully Qualified Domain Name) 형식으로 출력된다면 가장 앞에 있는 이름만 설정하면
+      된다.</para>
+
+      <para><screen>$ ifconfig –a
+lo0: flags=849&lt;UP,LOOPBACK,RUNNING,MULTICAST&gt; mtu 8232
+        inet 127.0.0.1 netmask ff000000 
+hme0: flags=863&lt;UP,BROADCAST,NOTRAILERS,RUNNING,MULTICAST&gt; mtu 1500
+        inet 192.168.1.10 netmask ffff0000 broadcast 192.168.255.255
+
+$ uname –n
+tmaxs1</screen></para>
+    </section>
+
+    <section>
+      <title>포트 번호</title>
+
+      <para>WebtoB가 기동될 때 외부 클라이언트(인터넷 브라우저)로부터의 연결을 기다리는 포트가 필요하다. 일반적으로 웹
+      서버를 설치하면 기본값으로 80번 포트를 사용하게 된다. 그러나 대부분의 운영체제에서 이 포트 번호는 슈퍼 유저(Super
+      User)가 아니면 사용할 수 없다.</para>
+
+      <para>80번 포트를 사용하려면 'root' 권한을 가져야 하며, 일반 사용자 계정으로 WebtoB를 설치하려면 1024번
+      이후의 포트 번호를 사용한다. 포트 번호가 80번이 아닌 경우에 브라우저는 서비스 요청을 해야 한다.</para>
+
+      <para>또한, WebtoB에서 사용할 포트 번호가 다른 프로그램에 의해서 이미 사용되고 있는지 여부도 확인해야 한다. 다른
+      포트를 설정해서 사용하면, 사용자에게 이 포트를 알려주어야 한다. 환경 파일에 포트 번호를 등록하기 전에 이러한 사항을 확인한 후
+      설정한다.</para>
+
+      <para>다음은 웹 서버의 포트 번호가 '8080'일 경우에 대한 예이다.</para>
+
+      <para><programlisting>http://www.tmax.co.kr:8080/index.html</programlisting></para>
+    </section>
+
+    <section>
+      <title>환경변수</title>
+
+      <para>WebtoB를 설치하기 전에 사용 중인 시스템 환경 파일을 반드시 확인한다. 이전에 WebtoB가 설치되었거나
+      WebtoB Servlet Engine을 함께 설치하고자 할 경우에는 이전에 설치한 내용이 있는지를 확인한 후 관련 환경변수들을
+      삭제할 것을 권장한다.</para>
+
+      <para>그렇지않으면 적용된 설치 경로가 혼동될 수 있고, 새로 설치하려는 WebtoB Servlet Engine이 Shared
+      Memory 충돌을 일으켜서 정상적으로 설치하지 못하는 경우가 발생할 수 있다.</para>
+    </section>
+
+    <section>
+      <title>JDK 버전 확인</title>
+
+      <para>WebtoB Standard Edition에서 WebtoB Servlet Engine을 함께 설치하는 경우에는
+      WebtoB Servlet Engine 설치 과정에서 Security와 관련한 Password 값을 인코딩해야 하기 때문에 설치
+      전에 JDK 경로가 설정되어 있는지 확인해야 한다.</para>
+
+      <para>JDK 경로를 확인하는 방법은 다음과 같다.</para>
+
+      <para><screen>$which java</screen></para>
+
+      <para>JDK가 설치되어 있지 않으면 아래 사이트에서 자신의 OS에 맞는 Java 2 SDK v5.0 또는 그 이상의
+      Standard Edition을 다운로드해서 미리 설치해야 한다.</para>
+
+      <para><programlisting><link
+            xlink:href="http://www.oracle.com/technetwork/java/index.html"
+            xlink:show="new">http://www.oracle.com/technetwork/java/index.html</link></programlisting></para>
+
+      <para><caution>
+          <para>JDK 버전은 Java 버전 5.0 또는 그 이상의 버전을 설치한다. 설치 후 JDK가 정상적으로 설치되었는지
+          반드시 확인한다.</para>
+        </caution></para>
+    </section>
+
+    <section>
+      <title>File Descriptor 확인</title>
+
+      <para>File Descriptor(이하 FD)는 WebtoB에서 동시에 띄울 수 있는 프로세스 수 및 동시 접속자 수에
+      영향을 준다. 따라서 FD 값이 동시에 띄울 프로세스 수와 동시 접속자 수를 합한 값보다 크게 설정되어 있는지 확인해야
+      한다.</para>
+
+      <para>WebtoB에서 운영체제에 따라 최적의 성능을 위해 사용하는 FD 값은 다음과 같다.</para>
+
+      <informaltable colsep="1" frame="topbot" rowsep="1">
+        <tgroup cols="2">
+          <colspec align="left" colwidth="130" />
+
+          <thead>
+            <row>
+              <entry>운영체제</entry>
+
+              <entry>최대 FD 값</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry>Linux-K2.4</entry>
+
+              <entry>1024개</entry>
+            </row>
+
+            <row>
+              <entry>UNIX/Linux-K2.6</entry>
+
+              <entry>8192개</entry>
+            </row>
+
+            <row>
+              <entry>Windows</entry>
+
+              <entry>2048개</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>IPv6 환경</title>
+
+      <para>IPv6 시스템에서 WebtoB를 실행하려면 환경변수를 설정해야 한다. 설정하지 않을 경우 IPv4 소켓을
+      사용한다.</para>
+
+      <para>운영체제에 따른 IPv6 설정 방법은 다음과 같다.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>UNIX/Linux</para>
+
+          <para><screen>WEBTOB_PREFER_IPV6=Y #(or y or 1)
+export WEBTOB_PREFER_IPV6</screen></para>
+
+          <para></para>
+        </listitem>
+
+        <listitem>
+          <para>Windows</para>
+
+          <para><screen>변수이름: WEBTOB_PREFER_IPV6
+변수 값 : Y</screen></para>
+        </listitem>
+      </itemizedlist>
+
+      <para><literallayout></literallayout></para>
+
+      <para>다음은 IPv6 소켓이 실행되었는지 확인하는 방법이다.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>UNIX/Linux</para>
+
+          <para><screen>$netstat -a |grep "8080"
+tcp        0      0 :::3423                     :::*                        LISTEN</screen></para>
+        </listitem>
+
+        <listitem>
+          <para>Windows</para>
+
+          <para><screen>C:\&gt;netstat -a |find "8080"
+TCP    [::]:3423              [::]:0                 LISTENING</screen></para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+
+  <section>
+    <title>라이선스 발급</title>
+
+    <para>WebtoB를 사용하기 위해서는 반드시 라이선스가 필요하다. 정식 라이선스 발급 이전에 데모 라이선스를 발급받는 절차는
+    다음과 같다.</para>
+
+    <orderedlist>
+      <listitem>
+        <para>호스트 이름을 확인한다.</para>
+
+        <para>데모 라이선스를 신청할 때 호스트 이름(hostname)을 입력해야 하므로 해당 머신의 호스트 이름을
+        확인한다.</para>
+
+        <para>호스트 이름은 아래의 예와 같이 <guibutton>hostname</guibutton> 명령이나 WebtoB가
+        설치될 때 ${WEBTOBDIR}/license 디렉터리에 생성되는 <guibutton>ncpu</guibutton>로 확인
+        가능하다.</para>
+
+        <para><itemizedlist>
+            <listitem>
+              <para>hostname 사용 예</para>
+
+              <para><screen>$ hostname
+Gloria</screen></para>
+
+              <para></para>
+            </listitem>
+
+            <listitem>
+              <para>ncpu 사용 예</para>
+
+              <para><screen>$ $WEBTOBDIR/license/ncpu
+HOST NAME: qpsx1
+HOSTID: A8C0A401
+NCPUS: 2
+IPADDRESS: 192.168.1.164 
+OPENFILES: 1024/1024
+UNAME: Linux qpsx1 2.6.21-1.3194.fc7 #1 SMP Wed May 23 22:35:01 EDT 2007 i686 i686 i386 GNU/Linux</screen></para>
+            </listitem>
+          </itemizedlist></para>
+      </listitem>
+
+      <listitem>
+        <para>라이선스를 신청한다.</para>
+
+        <para>1) 아래 사이트에 접속해서 라이선스를 신청할 수 있다.</para>
+
+        <programlisting><link xlink:href="http://technet.tmax.co.kr">http://technet.tmax.co.kr</link> &gt; <guibutton>[다운로드]</guibutton> &gt; <guibutton>[라이선스 신청]</guibutton></programlisting>
+
+        <para>2) <guibutton>라이선스 신청</guibutton> 화면에서 제품명, 호스트 이름(hostname),
+        E-mail 주소 등의 정보를 입력한다.</para>
+
+        <para>3) 입력한 E-mail 주소로 데모 라이선스가 전송된다.</para>
+      </listitem>
+
+      <listitem>
+        <para>라이선스를 적용한다.</para>
+
+        <para>전송받은 데모 라이선스를 ${WEBTOBDIR}/license 디렉터리에
+        <guibutton>license.dat</guibutton>라는 파일명으로 저장한다. 데모 라이선스를 적용하는 경우 2개월
+        간 기능의 제약 없이 사용할 수 있다.</para>
+      </listitem>
+    </orderedlist>
+
+    <para></para>
+
+    <?dbfo-need height="10in" ?>
+  </section>
+
+  <section>
+    <title>설치 과정</title>
+
+    <para>WebtoB 웹 서버를 설치하는 기본적인 과정은 다음과 같다.</para>
+
+    <para><orderedlist>
+        <listitem>
+          <para>WebtoB가 지원하는 플랫폼과 운영체제 등 기본 시스템의 사양이 갖추어졌는지 확인한다.</para>
+        </listitem>
+
+        <listitem>
+          <para>설치할 서버에 다른 웹 서버나 WebtoB의 기존 버전이 설치되어 있는지 확인한다. 다른 웹 서버를 이미
+          사용하고 있는 경우 사용할 포트 번호가 중복되지 않는지 확인하고, 필요하다면 해당 웹 서버를 중지시킨다.</para>
+        </listitem>
+
+        <listitem>
+          <para>위의 모든 작업이 우선적으로 이루어진 후 WebtoB를 원하는 서버에 설치한다.</para>
+        </listitem>
+
+        <listitem>
+          <para>설치가 끝난 후에는 라이선스 파일을 적용시킨다. WebtoB 웹 서버는 평가판이라 할지라도 사용하려면 라이선스
+          파일이 필요하다. 평가판의 경우에는 사용기간에 제한이 있기 때문에 사전에 이를 반드시 확인한다.</para>
+        </listitem>
+      </orderedlist></para>
+
+    <para></para>
+  </section>
+</chapter>

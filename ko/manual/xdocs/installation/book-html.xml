@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book label="" version="5.0" xml:id="book" xml:lang="ko-KR"
+      xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:mml="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook">
+  <title>WebtoB 설치 안내서</title>
+
+  <subtitle></subtitle>
+
+  <titleabbrev>WebtoB v4.1 SP6 Fix#0</titleabbrev>
+
+  <xi:include href="../common/bookinfo.xml"></xi:include>
+
+  <xi:include href="about-this-document.xml"></xi:include>
+
+  <xi:include href="chapter1.xml"></xi:include>
+
+  <xi:include href="chapter2.xml"></xi:include>
+
+  <xi:include href="chapter3.xml"></xi:include>
+
+  <xi:include href="chapter4.xml"></xi:include>
+</book>

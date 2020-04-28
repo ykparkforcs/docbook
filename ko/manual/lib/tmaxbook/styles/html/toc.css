@@ -1,0 +1,343 @@
+BODY {
+    background-color: #FCFCFC;
+    font-family: "Verdana", "Arial", "Helvetica", sans-serif;
+    font-size: 12px;
+    line-height: 140%;
+    margin: 0;
+}
+
+.JMTitleHeading {
+    font-family: "Times New Roman", "Times", serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    background-color: #089AAf;
+    border-top: 1px solid #333333;
+    border-bottom: 1px solid white;
+    padding: 7px;
+}
+
+div.toc {
+    margin: 10px;
+}
+
+A:link {
+    color: #1E5388;
+    text-decoration: none;
+}
+
+A:visited {
+    color: #1E5388;
+    text-decoration: none;
+}
+
+A:hover {
+    color: #FF0080;
+    text-decoration: underline;
+}
+
+A:active {
+    color: #FF0080;
+    text-decoration: none;
+}
+
+span {
+    font-weight: bold;
+}
+
+.section {
+    font-size: 11px;
+    font-weight: normal;
+}
+
+dd {
+    text-indent: -22px;
+}
+
+dd dl dd {
+    text-indent: -44px;
+}
+
+div.toc dl dd {
+    margin-bottom: 7px;
+}
+
+div.toc dl dd dl dd {
+    margin-bottom: 2px;
+}
+
+/*P, DL, DT, DD, BLOCKQUOTE {*/
+    /*color: #000000;*/
+    /*margin-bottom: 3px;*/
+    /*margin-top: 3px;*/
+    /*padding-top: 0;*/
+/*}*/
+
+/*OL, UL, P {*/
+    /*margin-top: 6px;*/
+    /*margin-bottom: 6px;*/
+/*}*/
+
+/*P.releaseinfo {*/
+    /*font-weight: bold;*/
+    /*padding-top: 10px;*/
+/*}*/
+
+/*BLOCKQUOTE {*/
+    /*margin-right: 0;*/
+/*}*/
+
+/*H1 {*/
+    /*font-size: 20px;*/
+    /*font-weight: bold;*/
+    /*color: #000000;*/
+    /*padding-bottom: 3px;*/
+    /*text-indent: 0;*/
+/*}*/
+
+/*H2 {*/
+    /*font-size: 16px;*/
+    /*font-weight: bold;*/
+    /*color: #1E5388;*/
+    /*padding-bottom: 3px;*/
+/*}*/
+
+/*H2[style] {*/
+    /*font-size: 12px;*/
+    /*font-weight: bold;*/
+    /*color: #1E5388;*/
+    /*background-color: #E9F0F8;*/
+    /*padding-top: 5px;*/
+    /*padding-bottom: 3px;*/
+    /*margin-top: 30px;*/
+/*}*/
+
+/*H3 {*/
+    /*font-size: 12px;*/
+    /*font-weight: bold;*/
+    /*color: #1E5388;*/
+/*}*/
+
+/*H4 {*/
+    /*font-size: 12px;*/
+    /*font-weight: bold;*/
+    /*text-indent:12px;*/
+    /*margin-top: 20px;*/
+    /*margin-bottom: 0;*/
+    /*color: #000000;*/
+/*}*/
+
+/*H5 {*/
+    /*font-size: 10px;*/
+    /*font-weight: bold;*/
+    /*text-indent:10px;*/
+    /*margin-top: 10px;*/
+    /*margin-bottom: 0;*/
+    /*color: #000000;*/
+/*}*/
+
+/*div.list-of-figures, div.list-of-tables, div.list-of-examples, div.list-of-equations {*/
+    /*margin-bottom: 20px;*/
+/*}*/
+
+/*div.table {*/
+	/*padding: 10px;*/
+/*}*/
+
+/*div.table p.title {*/
+    /*font-style: italic;*/
+    /*margin-top: 0;*/
+    /*margin-bottom: 0;*/
+    /*text-indent:0;*/
+    /*text-align: center;*/
+/*}*/
+
+/*div.figure p.title {*/
+    /*font-style: italic;*/
+    /*margin-top: 0;*/
+    /*margin-bottom: 0;*/
+    /*text-indent:0;*/
+    /*text-align: center;*/
+/*}*/
+
+/*div.example p.title {*/
+    /*font-style: italic;*/
+    /*margin-top: 0;*/
+    /*margin-bottom: 0;*/
+    /*text-indent:0;*/
+    /*text-align: center;*/
+/*}*/
+
+/*div.equation p.title {*/
+    /*font-style: italic;*/
+    /*margin-top: 0;*/
+    /*margin-bottom: 0;*/
+    /*text-indent:0;*/
+    /*text-align: center;*/
+/*}*/
+
+/*div.procedure p.title {*/
+    /*font-style: italic;*/
+    /*margin-top: 0;*/
+    /*margin-bottom: 0;*/
+    /*text-indent:0;*/
+    /*text-align: center;*/
+/*}*/
+
+/*div.task p.title {*/
+    /*font-style: italic;*/
+    /*margin-top: 0;*/
+    /*margin-bottom: 0;*/
+    /*text-indent:0;*/
+    /*text-align: center;*/
+/*}*/
+
+/*div.note, div.warning, div.tip, div.info {*/
+    /*line-height: 130%;*/
+    /*margin: 10px 0 10px 0;*/
+    /*color: #000000;*/
+    /*border-top: 2px solid #000000;*/
+    /*border-bottom: 1px solid #000000;*/
+    /*padding-top: 5px;*/
+    /*padding-bottom: 5px;*/
+/*}*/
+
+/*div.note *, div.warning *, div.tip *, div.info * {*/
+    /*margin-left: 10px;*/
+    /*margin-right: 10px;*/
+/*}*/
+
+/*TABLE  {*/
+    /*border-collapse: collapse;*/
+    /*border-spacing: 0;*/
+    /*border: 1px thin black;*/
+    /*empty-cells: hide;*/
+    /*margin: 10px 30px 5px 30px;*/
+    /*width: 90%*/
+/*}*/
+
+/*table[summary="Navigation header"] {*/
+    /*border-width: 0;*/
+    /*margin: 0;*/
+    /*width: 100%*/
+/*}*/
+
+/*table[summary="Navigation footer"] {*/
+    /*border-width: 0;*/
+    /*margin: 0;*/
+    /*width: 100%*/
+/*}*/
+
+/*table[summary="Callout list"] {*/
+    /*border-width: 0;*/
+/*}*/
+
+/*TH  {*/
+    /*background-color: #F8F8E9;*/
+    /*color: #646420;*/
+    /*font-size: 12px;*/
+    /*font-weight: bold;*/
+    /*padding: 5px;*/
+/*}*/
+
+/*table[summary="Navigation header"] tr th {*/
+    /*background-color: transparent;*/
+    /*color: #000000;*/
+/*}*/
+
+/*TD  {*/
+    /*font-size: 12px;*/
+    /*text-indent:0;*/
+    /*padding: 5px;*/
+/*}*/
+
+/*PRE.programlisting {*/
+    /*font-family: "Courier New", "Courier", monospace;*/
+    /*line-height: 130%;*/
+    /*color: #666666;*/
+    /*background-color: #F6F6F6;*/
+    /*padding: 10px;*/
+    /*border: 1px solid #000000;*/
+    /*margin-bottom: 5px;*/
+    /*text-indent:0;*/
+    /*margin-top: 5px;*/
+/*}*/
+
+/*PRE.screen {*/
+    /*font-family: "Courier New", "Courier", monospace;*/
+    /*line-height: 140%;*/
+    /*color: #FFFFFF;*/
+    /*background-color: #000000;*/
+    /*padding: 10px;*/
+    /*width: 100%;*/
+    /*border: 4px ridge #FFFFFF;*/
+    /*text-indent: 0;*/
+/*}*/
+
+/*PRE.synopsis {*/
+    /*font-family: "Courier New", "Courier", monospace;*/
+    /*line-height: 130%;*/
+    /*color: #666666;*/
+    /*/*background-color: #F6F6F6;*/
+    /*white-space: nowrap;*/
+    /*padding: 10px;*/
+    /*margin-bottom: 5px;*/
+    /*text-indent:0;*/
+    /*margin-top: 5px;*/
+/*}*/
+
+/*HR  {*/
+    /*width: 100%;*/
+    /*height: 1px;*/
+    /*background-color: #CCCCCC;*/
+    /*border-width: 0;*/
+    /*padding: 0;*/
+    /*color: #CCCCCC;*/
+/*}*/
+
+/*.variablelist {*/
+    /*padding-top: 10px;*/
+    /*padding-bottom:10px;*/
+    /*margin:0;*/
+/*}*/
+
+/*.term { */
+    /*font-weight:bold;*/
+/*}*/
+
+/*.mediaobject {*/
+    /*padding-top: 30px; */
+    /*padding-bottom: 30px; */
+/*}*/
+
+/*.sidebar {*/
+    /*float: right;*/
+    /*margin: 10px 0 10px 30px;*/
+    /*padding: 10px 20px 20px 20px;*/
+    /*width: 33%;*/
+    /*border: 1px solid black;*/
+    /*background-color: #F4F4F4;*/
+/*}*/
+
+/*tt, code, .property {*/
+    /*font-family: "Lucida Console", Courier, monospace;*/
+/*}*/
+
+/*.screen * .lineannotation {*/
+	/*color: #4000FF;*/
+/*}*/
+
+/*.programlisting * .lineannotation {*/
+	/*color: green;*/
+/*}*/
+
+/*span.remark {*/
+    /*color: red;*/
+    /*background-color: #FFFFD0;*/
+/*}*/
+
+/*.navbar-title {*/
+    /*font-weight: bold;*/
+/*}*/

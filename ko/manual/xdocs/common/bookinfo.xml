@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info version="5.0" xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:mml="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook">
+  <copyright>
+    <year>2020</year>
+
+    <holder>Forcs Co., Ltd. All Rights Reserved.</holder>
+  </copyright>
+
+  <publisher>
+    <address>Forcs Co., Ltd</address>
+  </publisher>
+
+  <legalnotice>
+    <title>Restricted Rights Legend</title>
+
+    <para>All Forcs software (eformsign<superscript>®</superscript>) and
+    documents are protected by copyright laws and the Protection Act of
+    Computer Programs, and international convention. Forcs software and
+    documents are made available under the terms of the Forcs License
+    Agreement and may only be used or copied in accordance with the terms of
+    this agreement. No part of this document may be transmitted, copied,
+    deployed, or reproduced in any form or by any means, electronic,
+    mechanical, or optical, without the prior written consent of Forcs Co.,
+    Ltd.</para>
+  </legalnotice>
+
+  <legalnotice>
+    <title>Trademarks</title>
+
+    <para>eformsign<superscript>® </superscript>are registered trademarks of
+    Forcs Co., Ltd. Other products, titles or services may be registered
+    trademarks of their respective companies.</para>
+  </legalnotice>
+
+  <legalnotice>
+    <title>Open Source Software Disclaimer</title>
+
+    <para>This product includes various open source software developed and/or
+    licensed by "OpenSSL", "RSA Data Security, Inc.", "Apache Foundation", and
+    "Jean-loup Gailly and Mark Adler". Details on the aforementioned and the
+    related open source software are in the directory,
+    "${INSTALL_PATH}/license/oss_licenses", of this product.</para>
+  </legalnotice>
+
+  <author>
+    <orgname>Forcst Co., Ltd.</orgname>
+  </author>
+
+  <pubdate>2020-05-31</pubdate>
+
+  <productnumber>eformsign v1.0</productnumber>
+
+  <edition>v1.0</edition>
+</info>

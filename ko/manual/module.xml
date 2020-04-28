@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 주의: 이 빌드 파일을 임의로 수정하지 마시오. -->
+<project name="tmaxbook-module" basedir=".">
+
+    <property file="module.properties"/>
+
+    <!-- 사용자가 -Dtargetdocs 옵션을 주지 않은 경우 module.properties에 정의되어 있는 documents property를 사용한다. -->
+    <property name="targetdocs" value="${documents}"/>
+
+    <!-- =================================================================== -->
+    <!-- module:tmaxbook.dir property targets                                -->
+    <!-- =================================================================== -->
+
+    <property environment="env"/>
+
+    <condition property="module:tmaxbook.dev.defined">
+        <isset property="env.TMAXBOOK_DEV"/>
+    </condition>
+
+    <target name="module:check-env-tmaxbook"
+            if="module:tmaxbook.dev.defined">
+        <property name="module:tmaxbook.dir" location="${env.TMAXBOOK_DEV}"/>
+    </target>
+
+    <property name="module:module.tmaxbook.dir" location="${tmaxbook.extract.dir}/tmaxbook"/>
+
+    <target name="module:check-module-tmaxbook"
+            unless="module:tmaxbook.dev.defined">
+        <property name="module:tmaxbook.dir" location="${module:module.tmaxbook.dir}"/>
+        <!-- common.xml이 tmaxbook-x_x_x.zip보다 더 최근에 수정되었으면 false -->
+        <condition property="module:need.unzip.tmaxbook">
+            <not>
+                <uptodate targetfile="${module:module.tmaxbook.dir}/common.xml">
+                    <srcfiles dir="${tmaxbook.zip.dir}">
+                        <include name="tmaxbook*.zip"/>
+                    </srcfiles>
+                </uptodate>
+            </not>
+        </condition>
+    </target>
+
+    <target name="module:echo-tmaxbook">
+        <echo message="Using TmaxBook at ${module:tmaxbook.dir}"/>
+    </target>
+
+    <!--
+     환경변수 TMAXBOOK_DEV가 설정되어 있으면 module:check-env-tmaxbook이 실행된다.
+        * 환경변수 TMAXBOOK_DEV가 가리키는 경로로 module:tmaxbook.dir property를 설정한다.
+     환경변수 TMAXBOOK_DEV가 설정되어 있지 않으면 module:check-module-tmaxbook이 실행된다.
+        * tmaxbook-x_x_x.zip 파일을 압축 해제한 경로로 module:tmaxbook.dir property를 설정한다.
+
+     (참고: target@if가 거짓이어도 target@depends는 실행된다.)
+     -->
+    <target name="module:check-tmaxbook"
+            depends="module:check-env-tmaxbook, module:check-module-tmaxbook, module:echo-tmaxbook"
+            if="module:need.unzip.tmaxbook">
+        <antcall target="module:clean-all"/>
+        <unzip dest="${tmaxbook.extract.dir}">
+            <fileset dir="${tmaxbook.zip.dir}" includes="tmaxbook*.zip"/>
+        </unzip>
+        <touch file="${module:module.tmaxbook.dir}/common.xml"/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Primary targets                                                     -->
+    <!-- =================================================================== -->
+
+    <target name="module:clean-all">
+        <delete dir="${module:module.tmaxbook.dir}"/>
+        <delete dir="docs"/>
+        <delete>
+            <fileset dir="xdocs" includes="**/target.db"/>
+        </delete>
+    </target>
+
+    <!-- Ant를 실행하는 시점에 common.xml이 존재하지 않을 수 있기 때문에 common.xml을 import 할 수 없다. -->
+
+    <target name="module:clean" depends="module:check-tmaxbook">
+        <ant antfile="${module:tmaxbook.dir}/common.xml" target="common:clean">
+            <property name="basedir" location="${basedir}"/>
+            <property name="lang" value="${lang}"/>
+            <property name="documents" value="${documents}"/>
+            <property name="targetdocs" value="${targetdocs}"/>
+        </ant>
+    </target>
+
+    <target name="module:html" depends="module:check-tmaxbook">
+        <ant antfile="${module:tmaxbook.dir}/common.xml" target="common:html">
+            <property name="basedir" location="${basedir}"/>
+            <property name="lang" value="${lang}"/>
+            <property name="documents" value="${documents}"/>
+            <property name="targetdocs" value="${targetdocs}"/>
+        </ant>
+    </target>
+
+    <target name="module:pdf" depends="module:check-tmaxbook">
+        <ant antfile="${module:tmaxbook.dir}/common.xml" target="common:pdf">
+            <property name="basedir" location="${basedir}"/>
+            <property name="lang" value="${lang}"/>
+            <property name="documents" value="${documents}"/>
+            <property name="targetdocs" value="${targetdocs}"/>
+        </ant>
+    </target>
+
+</project>

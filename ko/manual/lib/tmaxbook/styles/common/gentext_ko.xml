@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="US-ASCII"?>
+<l:l10n language="ko" xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0">
+    <l:gentext key="Appendix"                 text="Appendix"/>
+    <l:gentext key="appendix"                 text="Appendix"/>
+    <l:gentext key="CAUTION"                  text="[&#51452;&#51032;]"/>
+    <l:gentext key="Caution"                  text="&#51452;&#51032;"/>
+    <l:gentext key="caution"                  text="&#51452;&#51032;"/>
+    <l:gentext key="Chapter"                  text="&#51228;"/>
+    <l:gentext key="chapter"                  text="&#51228;"/>
+    <l:gentext key="Example"                  text="&#50696;"/>
+    <l:gentext key="example"                  text="&#50696;"/>
+    <l:gentext key="Figure"                   text="&#44536;&#47548;"/>
+    <l:gentext key="figure"                   text="&#44536;&#47548;"/>
+    <l:gentext key="GlossSee"                 text="See"/>
+    <l:gentext key="glosssee"                 text="See"/>
+    <l:gentext key="GlossSeeAlso"             text="See Also"/>
+    <l:gentext key="glossseealso"             text="See Also"/>
+    <l:gentext key="Part"                     text="Part"/>
+    <l:gentext key="part"                     text="Part"/>
+    <l:gentext key="see"                      text="See"/>
+    <l:gentext key="See"                      text="See"/>
+    <l:gentext key="seealso"                  text="See also"/>
+    <l:gentext key="Seealso"                  text="See also"/>
+    <l:gentext key="SeeAlso"                  text="See Also"/>
+    <l:gentext key="tip"                      text="&#51221;&#48372;"/>
+    <l:gentext key="TIP"                      text="[&#51221;&#48372;]"/>
+    <l:gentext key="Tip"                      text="&#51221;&#48372;"/>
+    <l:gentext key="Warning"                  text="&#44221;&#44256;"/>
+    <l:gentext key="warning"                  text="&#44221;&#44256;"/>
+    <l:gentext key="WARNING"                  text="&#44221;&#44256;!"/>
+    <l:gentext key="TableofContents"          text="&#45236;&#50857;&#32;&#47785;&#52264;"/>
+    <l:gentext key="tableofcontents"          text="&#45236;&#50857;&#32;&#47785;&#52264;"/>
+    <l:gentext key="ListofFigures"            text="&#44536;&#47548;&#32;&#47785;&#52264;"/>
+    <l:gentext key="listoffigures"            text="&#44536;&#47548;&#32;&#47785;&#52264;"/>
+    <l:gentext key="listoftables"             text="&#54364;&#32;&#47785;&#52264;"/>
+    <l:gentext key="ListofTables"             text="&#54364;&#32;&#47785;&#52264;"/>
+    <l:gentext key="ListofExamples"           text="&#50696;&#32;&#47785;&#52264;"/>
+    <l:gentext key="listofexamples"           text="&#50696;&#32;&#47785;&#52264;"/>
+    <l:gentext key="table"                    text="&#54364;"/>
+    <l:gentext key="Table"                    text="&#54364;"/>
+    <l:gentext key="hyphenation-character"    text=""/>
+    <l:gentext key="hyphenation-push-character-count"   text="2"/>
+    <l:gentext key="hyphenation-remain-character-count" text="2"/>
+    <l:gentext key="bookinfo-infotitle"       text="&#50504;&#45236;&#49436;&#32;&#51221;&#48372;"/>
+    <l:gentext key="bookinfo-title"           text="&#50504;&#45236;&#49436;&#32;&#51228;&#47785;"/>
+    <l:gentext key="bookinfo-pubdate"         text="&#48156;&#54665;&#51068;"/>
+    <l:gentext key="bookinfo-productnumber"   text="&#49548;&#54532;&#53944;&#50920;&#50612;&#32;&#48260;&#51204;"/>
+    <l:gentext key="bookinfo-edition"         text="&#50504;&#45236;&#49436;&#32;&#48260;&#51204;"/>
+    <l:gentext key="chapter-end"              text="&#51109;"/>
+
+    <l:context name="datetime">
+      <l:template name="format" text="Y-m-d"/>
+    </l:context>
+
+    <l:context name="title">
+        <l:template name="appendix"    text="Appendix&#160;%n.&#160;%t"/>
+        <l:template name="chapter"     text="&#51228;%n&#51109;&#160;%t"/>
+        <l:template name="part"        text="Part&#160;%n.&#160;%t"/>
+        <l:template name="figure"      text="[&#44536;&#47548; %n]&#160;%t"/>
+        <l:template name="table"       text="[&#54364; %n]&#160;%t"/>
+        <l:template name="equation"    text="[&#49688;&#49885; %n]&#160;%t"/>
+        <l:template name="example"     text="[&#50696; %n]&#160;%t"/>
+    </l:context>
+
+    <l:context name="title-numbered">
+        <l:template name="appendix"    text="Appendix&#160;%n.&#160;%t"/>
+        <l:template name="chapter"     text="&#51228;%n&#51109;&#160;%t"/>
+        <l:template name="part"        text="Part&#160;%n.&#160;%t"/>
+    </l:context>
+
+    <l:context name="xref">
+        <l:template name="olink.document.citation" text="%o. "/>
+        <l:template name="bridgehead"              text="%t"/>
+        <l:template name="refsection"              text="%t"/>
+        <l:template name="refsect1"                text="%t"/>
+        <l:template name="refsect2"                text="%t"/>
+        <l:template name="refsect3"                text="%t"/>
+        <l:template name="sect1"                   text="%t"/>
+        <l:template name="sect2"                   text="%t"/>
+        <l:template name="sect3"                   text="%t"/>
+        <l:template name="sect4"                   text="%t"/>
+        <l:template name="sect5"                   text="%t"/>
+        <l:template name="section"                 text="%t"/>
+        <l:template name="simplesect"              text="%t"/>
+    </l:context>
+
+    <l:context name="xref-number">
+        <l:template name="appendix"                text="Appendix&#160;%n."/>
+        <l:template name="chapter"                 text="&#51228;%n&#51109;"/>
+        <l:template name="part"                    text="Part&#160;%n"/>
+    </l:context>
+
+    <l:context name="xref-number-and-title">
+        <l:template name="appendix"                text="&#8220;Appendix&#160;%n.&#160;%t&#8221;"/>
+        <l:template name="chapter"                 text="&#8220;&#51228;%n&#51109;&#160;%t&#8221;"/>
+        <l:template name="equation"                text="&#49688;&#49885;&#160;%n"/>
+        <l:template name="example"                 text="&#91;&#50696;&#160;%n&#93;"/>
+        <l:template name="figure"                  text="&#91;&#44536;&#47548;&#160;%n&#93;"/>
+        <l:template name="part"                    text="&#8220;Part&#160;%n, %t&#8221;"/>
+        <l:template name="procedure"               text="&#51208;&#52264;&#160;%n"/>
+        <l:template name="table"                   text="&#91;&#54364;&#160;%n&#93;"/>
+        <l:template name="sect1"                   text="&#8220;%n. %t&#8221;"/>
+        <l:template name="sect2"                   text="&#8220;%n. %t&#8221;"/>
+        <l:template name="sect3"                   text="&#8220;%n. %t&#8221;"/>
+        <l:template name="sect4"                   text="&#8220;%n. %t&#8221;"/>
+        <l:template name="sect5"                   text="&#8220;%n. %t&#8221;"/>
+        <l:template name="section"                 text="&#8220;%n. %t&#8221;"/>
+    </l:context>
+</l:l10n>

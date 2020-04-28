@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="windows_install"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mml="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>Windows에서 설치 및 제거</title>
+
+  <para>본 장에서는 Windows에서의 WebtoB 설치하고 제거하는 과정에 대해 설명한다. Windows에서는 GUI로 설치 과정이
+  진행된다.</para>
+
+  <section xml:id="window-insall-webtob">
+    <title>WebtoB 설치</title>
+
+    <para>본 절에서는 WebtoB 설치하는 과정과 설치를 확인하는 방법에 대해서 설명한다.</para>
+
+    <section>
+      <title>설치</title>
+
+      <para>다음은 Windows에서 WebtoB를 설치하는 과정에 대한 설명이다.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Windows 플랫폼의 컴파일 환경이 VC90으로 변경됨에 따라서 정상적인 동작을 위해서는 "C 런타임 및 표준
+          C++ 라이브러리"(msvcm90.dll, msvcp90.dll, msvcr90.dll)가 필요하게 되었다.</para>
+
+          <para>Microsoft.NET Framework 3.5 SP1 이상 버전이 설치되어 있으면
+          Redistributable Package를 설치하지 않아도 된다. 다음은 각 OS별 Redistributable
+          Package를 다운로드받을 수 있는 URL이다.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Windows x86(32bit)</para>
+
+              <para><programlisting>http://www.microsoft.com/downloads/ko-kr/details.aspx?FamilyID=9B2DA534-3E03-4391-8A4D-074B9F2BC1BF</programlisting></para>
+            </listitem>
+          </itemizedlist>
+
+          <itemizedlist>
+            <listitem>
+              <para>Windows x64(64bit)</para>
+
+              <para><programlisting>http://www.microsoft.com/downloads/ko-kr/details.aspx?FamilyID=bd2a6171-e2d6-4230-b809-9a8d7548c1b6</programlisting></para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>WebtoB 설치를 위해
+          <guibutton>WEBTOB4_1_SP6_Fix0_Windows_x86.exe</guibutton>를 실행한다. 설치가
+          시작되면 다음과 같은 화면이 나타난다.</para>
+
+          <para><figure>
+              <title>Installer 준비 화면</title>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="left" fileref="resources/figure4_1.png"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure></para>
+
+          <?dbfo-need height="10in" ?>
+        </listitem>
+
+        <listitem>
+          <para>Installer를 사용하여 설치하는 과정에서 필요한 사항들을 안내한다. 다음 단계로 진행하려면
+          <guibutton>[Next]</guibutton> 버튼을 클릭하고, 이전 단계로 돌아가려면
+          <guibutton>[Previous]</guibutton> 버튼을 클릭한다. 설치 과정을 중단하려면
+          <guibutton>[Cancel]</guibutton> 버튼을 클릭한다.</para>
+
+          <para><figure>
+              <title>WebtoB 설치 - 안내 화면</title>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="left" fileref="resources/figure4_2.png"
+                             width="570"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure></para>
+        </listitem>
+
+        <listitem>
+          <para>WebtoB 라이선스 동의를 요청하는 화면이 나타난다. 라이선스 내용을 확인하고 동의하면
+          <guibutton>'I accept the terms of the License
+          Agreement'</guibutton>를 선택한 후 <guibutton>[Next]</guibutton> 버튼을 클릭하여
+          다음 단계로 진행한다. 라이선스에 동의하지 않으면 다음 단계로 진행되지 않는다.</para>
+
+          <figure>
+            <title>WebtoB 설치 - 라이선스 동의 화면</title>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata align="left" fileref="resources/figure4_3.png"
+                           width="570"></imagedata>
+              </imageobject>
+            </mediaobject>
+          </figure>
+        </listitem>
+
+        <listitem>
+          <para>Install Set을 선택한다.</para>
+
+          <para>WebtoB Standard Edition에서 제공되는 Servlet Engine과 함께 설치하려면
+          <guibutton>[Servlet+WebtoB]</guibutton>를 선택한다. Servlet Engine 기능은 데모
+          라이선스에서 제한 없이 제공되지만 정식 라이선스로 적용하려면 반드시 Standard 라이선스를 적용해야 한다.</para>
+
+          <para>WebtoB만 설치하려면 <guibutton>[WebtoB]</guibutton>를 선택한다. 본 절에서는
+          WebtoB만 설치하는 경우에 대해서 설명한다.</para>
+
+          <para></para>
+
+          <figure>
+            <title>WebtoB 설치 - Install Set 선택 화면</title>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata align="left" fileref="resources/figure4_4.png"
+                           width="570"></imagedata>
+              </imageobject>
+            </mediaobject>
+          </figure>
+
+          <para><note>
+              <para>Servlet Engine과 함께 설치하는 경우는 <xref
+              linkend="window-insall-servlet" />를 참고한다.</para>
+            </note></para>
+
+          <para></para>
+
+          <para></para>
+
+          <para></para>
+
+          <?dbfo-need height="10in" ?>
+        </listitem>
+
+        <listitem>
+          <para>WebtoB가 설치될 디렉터리를 설정한다. 직접 절대 경로를 입력하거나
+          <guibutton>[Choose]</guibutton> 버튼을 클릭해서 원하는 경로를 선택할 수 있다. 기본값으로
+          표시되는 경로를 사용하거나 경로 설정을 완료하면 <guibutton>[Next]</guibutton> 버튼을
+          클릭한다.</para>
+
+          <para><figure>
+              <title>WebtoB 설치 - 경로 설정 화면</title>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="left" fileref="resources/figure4_5.png"
+                             width="570" wordsize=""></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure></para>
+
+          <para></para>
+        </listitem>
+
+        <listitem>
+          <para>WebtoB 파일의 설치에 앞서 제품, 설치 경로, 디스크 용량 정보 등을 확인한다. 다음 단계로 진행하려면
+          <guibutton>[Install]</guibutton> 버튼을 클릭하고, 수정할 사항이 있을 경우에는
+          <guibutton>[Previous]</guibutton> 버튼을 클릭한다. 중단하려면
+          <guibutton>[Cancel]</guibutton> 버튼을 클릭한다.</para>
+
+          <para><figure>
+              <title>WebtoB 설치 - 정보 확인 화면</title>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="left" fileref="resources/figure4_6.png"
+                             width="570"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure></para>
+        </listitem>
+
+        <listitem>
+          <para>WebtoB 파일을 설치하고, WebtoB 설치에 필요한 작업들을 수행한 후 설치 완료 메시지가 나타난다.
+          WebtoB 설치 종료를 확인하고 <guibutton>[Done]</guibutton> 버튼을 클릭한다.</para>
+
+          <para><figure>
+              <title>WebtoB 설치 - 파일 설치 작업 화면</title>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="left" fileref="resources/figure4_7.png"
+                             width="570"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure></para>
+
+          <para><figure>
+              <title>WebtoB 설치 완료 화면</title>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="left" fileref="resources/figure4_8.png"
+                             width="570"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure></para>
+
+          <para></para>
+        </listitem>
+      </orderedlist>
+    </section>
+
+    <section xml:base="" xml:id="install-confirm">
+      <title>설치 확인</title>
+
+      <para><bridgehead>디렉터리 확인</bridgehead></para>
+
+      <para>지정된 설치 경로로 디렉터리가 생성되고 그 하위에 파일들이 설치된 것을 확인한다.</para>
+
+      <para><programlisting>WebtoB 4.1
+   |----ap
+   |----bin 
+   |----cgi-bin
+   |----config
+   |----docs
+   |----icons
+   |----lib
+   +----license
+   |----log
+   |----path 
+   |----ssl
+   |----svct
+   +----UninstallerData
+   |----usrinc</programlisting></para>
+
+      <para>각 디렉터리에 대한 설명은 <xref linkend="directory_info" />을 참고한다.</para>
+
+      <para></para>
+
+      <para></para>
+
+      <para><bridgehead>환경변수 확인 </bridgehead></para>
+
+      <para>다음과 같이 환경변수가 등록된 것을 확인한다.</para>
+
+      <para><programlisting>WEBTOBDIR=C:\TmaxSoft\WebtoB4.1
+PATH=%WEBTOBDIR%\bin;%WEBTOBDIR%\lib;</programlisting></para>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section xml:id="window-insall-servlet">
+    <title>Servlet Engine 설치</title>
+
+    <para>Servlet Engine은 WebtoB Standard에서 제공하는 기능이다. 본 절에서는 Servlet Engine
+    설치를 선택한 경우의 설치 과정에 대해서 설명한다.</para>
+
+    <section>
+      <title>설치</title>
+
+      <para>다음은 Servlet Engine과 WebtoB를 설치하는 과정에 대한 설명이다.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Install Set에서 Servlet Engine을 함께 설치할 것인지 또는 WebtoB만 설치할 것인지를
+          선택한다. Servlet Engine을 설치하려면 <guibutton>[Servlet +
+          WebtoB]</guibutton>를 클릭한다. WebtoB만 설치하는 경우에 대한 설명은 <xref
+          linkend="window-insall-webtob" />를 참고한다.</para>
+
+          <para><figure>
+              <title>Servlet Engine 설치 - Install Set 선택 화면</title>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="left" fileref="resources/figure4_9.png"
+                             width="570"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure></para>
+        </listitem>
+
+        <listitem>
+          <para>WebtoB가 설치될 디렉터리를 설정한다. 직접 절대 경로를 입력하거나
+          <guibutton>[Choose]</guibutton> 버튼을 클릭하여 경로를 선택할 수도 있다. 기본값으로 표시되는
+          경로를 사용하거나 경로 설정을 완료하면 <guibutton>[Next]</guibutton> 버튼을 클릭한다.</para>
+
+          <para><figure>
+              <title>Servlet Engine 설치 - 경로 설정 화면</title>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="left" annotations=""
+                             fileref="resources/figure4_10.png" width="570"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure></para>
+
+          <para></para>
+
+          <?dbfo-need height="10in" ?>
+        </listitem>
+
+        <listitem>
+          <para>Servlet Engine에서 사용할 JDK의 경로를 설정한다. 직접 절대 경로를 입력하거나
+          <guibutton>[Choose]</guibutton> 버튼을 클릭하여 JDK 설치 경로를 탐색한다. 기본으로 제시되는
+          경로를 사용하거나 경로 설정을 완료하면 <guibutton>[Next]</guibutton> 버튼을 클릭한다.</para>
+
+          <para><figure>
+              <title>Servlet Engine 설치 - JDK 경로 설정 화면</title>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="left" fileref="resources/figure4_11.png"
+                             width="570"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure></para>
+        </listitem>
+
+        <listitem>
+          <para>Servlet Engine 관리자 패스워드를 설정한다. Servlet Engine의 관리자
+          계정(administrator)에 대한 패스워드를 입력하고 다시 한 번 입력한다.</para>
+
+          <para><figure>
+              <title>Servlet Engine 설치 - 관리자 패스워드 설정 화면</title>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="left" fileref="resources/figure4_12.png"
+                             width="570"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure></para>
+        </listitem>
+
+        <listitem>
+          <para>WebtoB 파일의 설치에 앞서 제품, 설치 경로, 디스크 용량 정보 등을 확인한다. 다음 단계로 진행하려면
+          <guibutton>[Install]</guibutton> 버튼을 클릭하고, 수정할 사항이 있을 때는
+          <guibutton>[Previous]</guibutton> 버튼을 클릭한다. 중단하려면
+          <guibutton>[Cancel]</guibutton> 버튼을 클릭한다.</para>
+
+          <para><figure>
+              <title>Servlet Engine 설치 - 정보 확인 화면</title>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="left" fileref="resources/figure4_13.png"
+                             width="570"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure></para>
+        </listitem>
+
+        <listitem>
+          <para>WebtoB 파일을 설치하고, WebtoB 설치에 필요한 작업들을 수행한 후 설치 완료 메시지가 나타난다.
+          WebtoB 설치 종료를 확인하고 <guibutton>[Done]</guibutton> 버튼을 클릭한다.</para>
+
+          <para><figure>
+              <title>Servlet Engine 설치 - 파일 설치 작업 화면</title>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="left" fileref="resources/figure4_14.png"
+                             width="570"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure><figure>
+              <title>Servlet Engine 설치 완료 화면</title>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="left" fileref="resources/figure4_15.png"
+                             width="570"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure></para>
+        </listitem>
+      </orderedlist>
+    </section>
+
+    <section>
+      <title>설치 확인</title>
+
+      <para><bridgehead>디렉터리 확인</bridgehead></para>
+
+      <para>지정된 설치 경로로 디렉터리가 생성되고 그 하위에 파일들이 설치된 것을 확인한다.</para>
+
+      <para><programlisting>WebtoB 4.1
+   |----ap
+   |----bin 
+   |----cgi-bin
+   |----config
+   |----docs
+   +----jeus
+   |----icons
+   |----lib
+   +----license
+   |----log
+   |----path 
+   |----ssl
+   |----svct
+   +----UninstallerData
+   |----usrinc</programlisting></para>
+
+      <para>다음은 디렉터리에 대한 설명이다.</para>
+
+      <para><variablelist>
+          <varlistentry>
+            <term>jeus</term>
+
+            <listitem>
+              <para>WebtoB와 Servelet Engine을 함께 설치할 경우에 생성되는 디렉터리로 JEUS의
+              Servelet Engine이 위치한다.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+
+      <para></para>
+
+      <para><note>
+          <para>본 절에서는 추가 설치된 디렉터리만 언급한다. 나머지 디렉터리에 대한 설명은 <xref
+          linkend="directory_info" />을 참고한다.</para>
+        </note></para>
+
+      <para><literallayout></literallayout></para>
+
+      <para><bridgehead>환경변수 확인 </bridgehead></para>
+
+      <para>Windows의 <guibutton>[시작]</guibutton> &gt;
+      <guibutton>[설정]</guibutton> &gt; <guibutton>[제어판]</guibutton> &gt;
+      <guibutton>[시스템]</guibutton> &gt; <guibutton>[고급]</guibutton> 메뉴에서 다음과
+      같이 환경변수가 등록된 것을 확인한다.</para>
+
+      <para><programlisting>(사용자 환경변수)
+WEBTOBDIR=C:\TmaxSoft\WebtoB4.1
+PATH=%WEBTOBDIR%\bin;%WEBTOBDIR%\lib;%W2B_JEUSHOME%\bin;%W2B_JEUSHOME%\lib\system;
+W2B_JEUSHOME=C:\TmaxSoft\WebtoB4.1\jeus</programlisting></para>
+    </section>
+  </section>
+
+  <section>
+    <title>서비스 등록과 제거</title>
+
+    <para>WebtoB는 Windows 운영체제에서 Windows 서비스로 동작할 수 있도록 설계되었다. 이 기능을 사용하려면
+    WebtoB 디렉터리에 있는 서비스를 실행하고 Windows NT 서비스로 동작하도록 WebtoB를 등록한다.</para>
+
+    <para></para>
+
+    <section>
+      <title>서비스 등록</title>
+
+      <para>다음은 Windows에서 WebtoB 서비스를 등록하는 과정에 대한 설명이다.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>webtob_service.exe 파일이 위치한 <guibutton>%WEBTOBDIR%</guibutton>의
+          <guibutton>bin</guibutton> 디렉터리로 이동한다.</para>
+
+          <para>(기본 위치 : C:\TmaxSoft\WebtoB4.1\bin)</para>
+        </listitem>
+
+        <listitem>
+          <para>다음과 같이 <guibutton>webtob_service.exe -create</guibutton>를 실행하면
+          Windows에 WebtoB를 서비스로 등록한다.</para>
+
+          <para><screen>C:\TmaxSoft\WebtoB4.1\bin&gt;<guibutton>webtob_service.exe -create</guibutton>
+WebtoB path="C:\TmaxSoft\WebtoB4.1"
+Service command="C:\TmaxSoft\WebtoB4.1\bin\service_loader.exe"
+Service log="C:\TmaxSoft\WebtoB4.1\bin\service-WebtoB.log"
+wsboot command="wsboot -N WebtoB"
+wsdown command="wsdown -z -N WebtoB"
+Trying to create service WebtoB...
+Successfully installed service WebtoB</screen></para>
+
+          <para></para>
+        </listitem>
+
+        <listitem>
+          <para>Windows의 <guibutton>[시작]</guibutton> &gt;<guibutton>
+          [설정]</guibutton> &gt; <guibutton>[제어판]</guibutton> &gt;
+          <guibutton>[관리 도구]</guibutton> &gt; <guibutton>[서비스]</guibutton>
+          메뉴에서 WebtoB 서비스를 확인할 수 있다.</para>
+        </listitem>
+
+        <listitem>
+          <para>Windows <guibutton>서비스</guibutton> 화면에서 서비스 이름을 더블 클릭하면
+          <guibutton>WebtoB 속성</guibutton> 화면이 조회된다. 서비스가 동작 중인 경우
+          <guibutton>서비스 상태</guibutton>의 <guibutton>[중지]</guibutton>,
+          <guibutton>[일시 중지]</guibutton>, <guibutton>[계속]</guibutton> 버튼이
+          활성화되고, 서비스가 중지된 경우는 <guibutton>[시작]</guibutton> 버튼만 활성화된다.
+          <guibutton>[시작]</guibutton> 버튼을 클릭하면 서비스가 시작된다.</para>
+
+          <para></para>
+
+          <para><figure>
+              <title>서비스 등록 - WebtoB 4.1 서비스 속성 화면</title>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="left" fileref="resources/figure4_16.png"
+                             width="400"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure>버튼의 활성화 상태는 설치 파일에 등록된 Engine과 기타 서비스들이 로딩되는 것을 나타낸다.
+          서비스를 중지하려면 <guibutton>[중지]</guibutton> 버튼을 클릭한다.</para>
+        </listitem>
+      </orderedlist>
+
+      <para></para>
+
+      <para></para>
+
+      <para><note>
+          <para>최초 설치 후 재부팅을 하지 않은 경우 LocalSystem 권한으로 실행하면 환경변수가 적용되지 않아서
+          "WEBTOBDIR is not set" 에러가 발생할 수 있다. LocalSystem 권한으로 WebtoB를 실행하려면
+          재부팅 후 사용해야 한다.</para>
+        </note></para>
+    </section>
+
+    <section>
+      <title>서비스 제거</title>
+
+      <para>다음은 WebtoB 서비스를 제거하는 과정에 대한 설명이다.</para>
+
+      <para><orderedlist>
+          <listitem>
+            <para>서비스를 제거하기 전에, 먼저 서비스를 중지해야 한다.</para>
+
+            <para>Windows에서 <guibutton>[시작]</guibutton> &gt;
+            <guibutton>[설정]</guibutton> &gt; <guibutton>[제어판]</guibutton> &gt;
+            <guibutton>[관리 도구]</guibutton> &gt; <guibutton>[서비스]</guibutton>
+            메뉴에서 중지할 서비스 이름을 더블 클릭한다. <guibutton>WebtoB 속성</guibutton> 화면에서
+            <guibutton>서비스 상태</guibutton>의 <guibutton>[중지]</guibutton> 버튼을
+            클릭하여 서비스를 중지한다.</para>
+          </listitem>
+
+          <listitem>
+            <para>서비스 중지가 완료되면 서비스를 영구히 제거하기 위해
+            <guibutton>%WEBTOBDIR%\bin</guibutton> 디렉터리에서
+            <guibutton>webtob_service.exe -delete</guibutton>를 실행한다.</para>
+
+            <para><screen>C:\TmaxSoft\WebtoB4.1\bin&gt;<guibutton>webtob_service.exe -delete</guibutton>
+Trying to remove service WebtoB...
+Successfully deleted service WebtoB.</screen></para>
+
+            <para></para>
+          </listitem>
+        </orderedlist></para>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>WebtoB 제거</title>
+
+    <section>
+      <title>제거 실행</title>
+
+      <para>다음은 Windows에서 WebtoB를 제거하는 과정에 대한 설명이다.</para>
+
+      <para><orderedlist>
+          <listitem>
+            <para>WebtoB를 제거하려면 Windows에서 <guibutton>[시작]</guibutton> &gt;
+            <guibutton>[Tmaxsoft]</guibutton> &gt; <guibutton>[WebtoB
+            4.1]</guibutton> &gt; <guibutton>[Uninstall]</guibutton> 메뉴를
+            선택한다.</para>
+
+            <para><figure>
+                <title>Uninstall 메뉴 선택</title>
+
+                <mediaobject>
+                  <imageobject>
+                    <imagedata align="left" fileref="resources/figure4_17.png"></imagedata>
+                  </imageobject>
+                </mediaobject>
+              </figure></para>
+          </listitem>
+
+          <listitem>
+            <para><guibutton>[Uninstall]</guibutton> 메뉴를 실행하면 다음과 같이 제거 작업에 대한
+            안내 화면이 출력된다.</para>
+
+            <para><figure>
+                <title>WebtoB 제거 - 안내 화면</title>
+
+                <mediaobject>
+                  <imageobject>
+                    <imagedata align="left" fileref="resources/figure4_18.png"
+                               width="600"></imagedata>
+                  </imageobject>
+                </mediaobject>
+              </figure><?dbfo-need height="10in" ?></para>
+          </listitem>
+
+          <listitem>
+            <para><guibutton>[Uninstall] </guibutton>버튼을 클릭하면 다음과 같이 설치되었던 파일
+            및 환경변수 삭제 등의 작업을 수행한다.</para>
+
+            <para><figure>
+                <title>WebtoB 제거 - 진행 상태 화면</title>
+
+                <mediaobject>
+                  <imageobject>
+                    <imagedata align="left" fileref="resources/figure4_19.png"
+                               width="600"></imagedata>
+                  </imageobject>
+                </mediaobject>
+              </figure></para>
+          </listitem>
+
+          <listitem>
+            <para>WebtoB 제거 작업이 성공적으로 완료되었다는 메시지를 확인한 후
+            <guibutton>[Done]</guibutton> 버튼을 클릭하여 제거 작업을 종료한다.</para>
+
+            <?dbfo keep-together="always"?>
+
+            <para><figure>
+                <title>WebtoB 제거 완료 화면</title>
+
+                <mediaobject>
+                  <imageobject>
+                    <imagedata align="left" annotations=""
+                               fileref="resources/figure4_20.png" width="600"></imagedata>
+                  </imageobject>
+                </mediaobject>
+              </figure></para>
+          </listitem>
+        </orderedlist></para>
+    </section>
+
+    <section>
+      <title>제거 확인</title>
+
+      <para>WebtoB 제거가 완료되면 다음의 사항을 확인한다.</para>
+
+      <para><itemizedlist>
+          <listitem>
+            <para><guibutton>파일 삭제 확인</guibutton></para>
+
+            <para>설치했던 파일들이 모두 삭제된 것을 확인한다. 단, 설치 이후에 생성된 파일들은 남아있을 수 있으므로 별도로
+            삭제해야 한다.</para>
+          </listitem>
+
+          <listitem>
+            <para><guibutton>환경변수 삭제 확인</guibutton></para>
+
+            <para>WebtoB 설치할 때 등록된 환경변수들과 'PATH'에 설정된 경로들이 정상적으로 삭제된 것을
+            확인한다.</para>
+          </listitem>
+        </itemizedlist></para>
+
+      <para></para>
+
+      <para></para>
+    </section>
+  </section>
+</chapter>

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preface version="5.0" xml:id="about" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:mml="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title xml:lang="ko-KR">안내서에 대하여</title>
+
+  <bridgehead>안내서의 대상</bridgehead>
+
+  <para>본 안내서는 eformsign<superscript>®</superscript>(이하 eformsign)를 설치 및 제거하고자
+  하는 모든 사용자를 대상으로 기술한다.</para>
+
+  <para></para>
+
+  <bridgehead>안내서의 전제 조건</bridgehead>
+
+  <para>본 안내서를 원활하게 이해하기 위해서는 다음과 같은 사항을 미리 알고 있어야 한다.</para>
+
+  <itemizedlist>
+    <listitem>
+      <para>웹 서버(Web Server) 및 UNIX 시스템에 대한 이해</para>
+    </listitem>
+
+    <listitem>
+      <para>WebtoB의 기본 개념에 대한 이해</para>
+    </listitem>
+  </itemizedlist>
+
+  <para></para>
+
+  <bridgehead>안내서의 제한 조건</bridgehead>
+
+  <para>본 안내서는 WebtoB를 시스템에 설치하는 과정에 대한 필수 사항만을 기술하고 있다. 따라서 WebtoB의 구체적인 사용
+  방법이나 관리 및 운용에 관한 사항은 각 제품의 안내서를 참고한다.</para>
+
+  <para></para>
+
+  <para></para>
+
+  <para></para>
+
+  <?dbfo-need height="10in" ?>
+
+  <bridgehead>안내서 구성</bridgehead>
+
+  <para>WebtoB 설치 안내서는 총 4개의 장으로 구성되어 있다.</para>
+
+  <para>각 장의 주요 내용은 다음과 같다.</para>
+
+  <itemizedlist>
+    <listitem>
+      <para>제1장: 설치 개요</para>
+
+      <para>WebtoB를 설치할 때 미리 고려해야 할 사항에 대한 설명과 WebtoB의 특징에 대해서 기술한다.</para>
+    </listitem>
+
+    <listitem>
+      <para>제2장: 설치 전 준비사항</para>
+
+      <para>WebtoB를 설치하기 전에 확인해야 할 사항에 대해서 기술한다.</para>
+    </listitem>
+
+    <listitem>
+      <para>제3장: UNIX에서 설치 및 제거</para>
+
+      <para>WebtoB를 UNIX에서 설치하고 제거하는 전반적인 과정과 기동, 종료하는 방법에 대해서 기술한다.</para>
+    </listitem>
+
+    <listitem>
+      <para>제4장: Windows에서 설치 및 제거</para>
+
+      <para>WebtoB를 Windows에서 설치하고 제거하는 전반적인 과정과 서비스를 등록, 제거하는 방법에 대해서
+      기술한다.</para>
+    </listitem>
+  </itemizedlist>
+
+  <para></para>
+
+  <?dbfo-need height="10in" ?>
+
+  <bridgehead>안내서 규약</bridgehead>
+
+  <informaltable colsep="1" frame="topbot" rowsep="1">
+    <tgroup cols="2">
+      <colspec align="left" colwidth="150" />
+
+      <thead>
+        <row>
+          <entry>표기</entry>
+
+          <entry>의미</entry>
+        </row>
+      </thead>
+
+      <tbody>
+        <row>
+          <entry>&lt;AaBbCc123&gt;</entry>
+
+          <entry>프로그램 소스 코드의 파일명</entry>
+        </row>
+
+        <row>
+          <entry>&lt;Ctrl&gt;+C</entry>
+
+          <entry>Ctrl과 C를 동시에 누름</entry>
+        </row>
+
+        <row>
+          <entry><guimenuitem> [Button]</guimenuitem></entry>
+
+          <entry>GUI의 버튼 또는 메뉴 이름</entry>
+        </row>
+
+        <row>
+          <entry><guimenuitem> 진하게</guimenuitem></entry>
+
+          <entry>강조</entry>
+        </row>
+
+        <row>
+          <entry>" "(따옴표)</entry>
+
+          <entry>다른 관련 안내서 또는 안내서 내의 다른 장 및 절 언급</entry>
+        </row>
+
+        <row>
+          <entry><guimenuitem> '입력항목'</guimenuitem></entry>
+
+          <entry>화면 UI에서 입력 항목에 대한 설명</entry>
+        </row>
+
+        <row>
+          <entry><email> 하이퍼링크</email></entry>
+
+          <entry>메일계정, 웹 사이트</entry>
+        </row>
+
+        <row>
+          <entry>&gt;</entry>
+
+          <entry>메뉴의 진행 순서</entry>
+        </row>
+
+        <row>
+          <entry>+----</entry>
+
+          <entry>하위 디렉터리 또는 파일 있음</entry>
+        </row>
+
+        <row>
+          <entry>|----</entry>
+
+          <entry>하위 디렉터리 또는 파일 없음</entry>
+        </row>
+
+        <row>
+          <entry><note>
+              <para></para>
+            </note></entry>
+
+          <entry>참고 또는 주의사항</entry>
+        </row>
+
+        <row>
+          <entry><guimenuitem>[그림 1.1]</guimenuitem></entry>
+
+          <entry>그림 이름</entry>
+        </row>
+
+        <row>
+          <entry><guimenuitem>[표 1.1]</guimenuitem></entry>
+
+          <entry>표 이름</entry>
+        </row>
+
+        <row>
+          <entry><programlisting language=""> AaBbCc123</programlisting></entry>
+
+          <entry>명령어, 명령어 수행 후 화면에 출력된 결과물, 예제코드</entry>
+        </row>
+
+        <row>
+          <entry>[ ]</entry>
+
+          <entry>옵션 인수 값</entry>
+        </row>
+
+        <row>
+          <entry>|</entry>
+
+          <entry>선택 인수 값</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </informaltable>
+
+  <para></para>
+
+  <?dbfo-need height="10in" ?>
+
+  <para><bridgehead>관련 안내서</bridgehead></para>
+
+  <informaltable colsep="1" frame="topbot" rowsep="1">
+    <tgroup cols="2">
+      <colspec align="left" colwidth="150" />
+
+      <thead>
+        <row>
+          <entry>안내서</entry>
+
+          <entry>설명</entry>
+        </row>
+      </thead>
+
+      <tbody>
+        <row>
+          <entry><para>WebtoB</para><para>관리자 안내서</para></entry>
+
+          <entry>WebtoB를 사용하기 위한 환경설정 방법과 WebtoB의 기동 및 종료, 관리, 튜닝, 보안 등
+          WebtoB를 사용하는 전반적인 방법에 대해 기술한 안내서이다.</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </informaltable>
+
+  <para></para>
+
+  <para></para>
+
+  <para></para>
+
+  <?dbfo-need height="10in" ?>
+
+  <bridgehead>연락처</bridgehead>
+
+  <para><bridgehead>Korea</bridgehead><address><otheraddr>TmaxSoft Co., Ltd</otheraddr>
+<otheraddr>272-6, Seohyeon-dong, Bundang-gu, 
+Seongnam-si, Gyeonggi-do, 463-824
+</otheraddr><country>South Korea</country>
+Tel: <phone>+82-31-8018-1000</phone>
+Fax: <fax>+82-31-8018-1115</fax>
+Email: <email>info@tmax.co.kr</email>
+Web (Korean): <otheraddr><link xlink:href="chapter1.xml">http://www.tmax.co.kr</link></otheraddr>
+기술지원: <otheraddr><link xlink:href="http://technet.tmaxsoft.com">http://technet.tmaxsoft.com</link></otheraddr></address></para>
+
+  <para><bridgehead>USA</bridgehead><address><otheraddr>TmaxSoft, Inc.</otheraddr>
+560 Sylvan Avenue Englewood Cliffs, NJ 07632
+<country>U.S.A</country>
+Tel: 1-201-567-8266
+Fax: <fax>1-</fax>201-567-7339
+Email: <email>info@tmaxsoft.com</email>
+Web (English): <otheraddr><link xlink:href="http://www.tmaxsoft.com">http://www.tmaxsoft.com</link></otheraddr></address></para>
+
+  <para><bridgehead>Japan</bridgehead><address><otheraddr>TmaxSoft Japan Co., Ltd.</otheraddr>
+<otheraddr>5F Sanko Bldg, 3-12-16 Mita, Minato-Ku, Tokyo, 108-0073</otheraddr>
+<country>Japan</country>
+Tel: <phone>+81-3-5765-2550</phone>
+Fax: <fax>+81-3-5765-2567</fax>
+Email: <email>info.jp@tmaxsoft.com</email>
+Web (Japanese): <otheraddr><link xlink:href="http://www.tmaxsoft.co.jp">http://www.tmaxsoft.co.jp</link></otheraddr></address></para>
+
+  <?dbfo-need height="10in" ?>
+
+  <para><bridgehead>China</bridgehead><address><otheraddr>TmaxSoft China Co., Ltd.</otheraddr><otheraddr>
+Beijing Silver Tower, RM 1508, 2# North Rd Dong San Huan,</otheraddr>
+<otheraddr>Chaoyang District, Beijing, China, 100027</otheraddr>
+<country>China</country>
+Tel: +<phone>86-10-6410-6145~8</phone>
+Fax: <fax>+86-10-6410-6144</fax>
+Email: <email>info.cn@tmaxsoft.com</email>
+Web (Chinese): <otheraddr><link xlink:href="http://www.tmaxchina.com.cn">http://www.tmaxsoft.com.cn</link></otheraddr></address></para>
+</preface>

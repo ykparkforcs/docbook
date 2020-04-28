@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="tmaxbook" basedir=".">
+
+    <!--
+     문서 모듈의 module.xml로부터 다음 property들을 넘겨 받는다.
+        * basedir       - 문서 모듈이 위치한 경로
+        * lang          - 대상 언어 (module.properties 참고)
+        * documents     - 모듈에 포함된 모든 문서의 이름 ("+"로 연결, module.properties 참고)
+        * targetdocs    - 변환 대상 문서의 이름 ("+"로 연결, module.xml 참고)
+     -->
+
+    <!-- =================================================================== -->
+    <!-- Module locations                                                    -->
+    <!-- =================================================================== -->
+
+    <property name="src.dir" location="${basedir}/xdocs"/>
+
+    <property name="output.dir" location="${basedir}/docs"/>
+    <property name="html.output.dir" location="${output.dir}/html"/>
+    <property name="pdf.output.dir" location="${output.dir}/pdf"/>
+
+    <property name="glossary.database.file" location="${src.dir}/glossary-database.xml"/>
+    <property name="temporary.glossary.database.file" location="${output.dir}/glossary-database.xml"/>
+
+    <!-- =================================================================== -->
+    <!-- TmaxBook locations                                                  -->
+    <!-- =================================================================== -->
+
+    <dirname file="${ant.file.tmaxbook}" property="tmaxbook.dir"/>
+
+    <property name="lib.dir"            location="${tmaxbook.dir}/lib"/>
+    <property name="xep.dir"            location="${lib.dir}/xep"/>
+    <property name="isoi18n.dir"        location="${lib.dir}/isoi18n"/>
+    <property name="docbook.xsl.dir"    location="${lib.dir}/docbook-xsl"/>
+
+    <property name="styles.dir"     location="${tmaxbook.dir}/styles"/>
+    <property name="images.dir"     location="${styles.dir}/images"/>
+    <property name="html.xsl"       location="${styles.dir}/html/tmaxbook.xsl"/>
+    <property name="toc.xsl"        location="${styles.dir}/html/toc.xsl"/>
+    <property name="fo.xsl"         location="${styles.dir}/fo/tmaxbook.xsl"/>
+
+    <path id="project.classpath">
+        <fileset dir="${lib.dir}" includes="*.jar"/>
+        <fileset dir="${xep.dir}/lib" includes="*.jar"/>
+        <fileset dir="${isoi18n.dir}" includes="*.jar"/>
+        <fileset dir="${docbook.xsl.dir}/extensions" includes="saxon65.jar"/>
+    </path>
+
+    <!-- =================================================================== -->
+    <!-- Task definitions                                                    -->
+    <!-- =================================================================== -->
+
+    <!-- if, foreach, switch, osfamily 등의 task 정의를 포함하고 있다. -->
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties"
+             classpathref="project.classpath"/>
+
+    <!-- =================================================================== -->
+    <!-- Transformation properties                                           -->
+    <!-- =================================================================== -->
+
+    <property name="documents.separator" value="+"/>
+
+    <!--
+     final.version=false이면
+        * 배경에 DRAFT 이미지를 넣고, (draft.mode=yes)
+        * remark element의 내용을 출력물에 포함시킨다. (show.comments=1)
+     -->
+    <property name="final.version" value="false"/>
+
+    <if>
+        <istrue value="${final.version}"/>
+        <then>
+            <property name="param.show.comments" value="show.comments=0"/>
+            <property name="param.draft.mode" value="draft.mode=no"/>
+        </then>
+        <else>
+            <property name="param.show.comments" value="show.comments=1"/>
+            <property name="param.draft.mode" value="draft.mode=yes"/>
+        </else>
+    </if>
+
+    <!--
+     logo.path에 값이 들어오면 들어온 값을 이용
+     -->
+    <property name="logo.path" value=""/>
+
+    <switch value="${logo.path}">
+        <case value="">
+            <property name="logo.image" value="${images.dir}/fo/TiberoCompanyLogo.pdf"/>
+        </case>
+        <default>
+            <property name="logo.image" value="${logo.path}"/>
+        </default>
+    </switch>
+
+
+    <!--
+     glossary.collection parameter 값은 URI 형식을 가져야 하므로 윈도우 계열의 OS에서는
+     X:\path\to\temporary\glossary\database\file 형식의 경로를
+     file:///X:/path/to/temporary/glossary/database/file 형식으로 변환해 준다.
+     -->
+    <osfamily property="os.family"/>
+
+    <switch value="${os.family}">
+        <case value="windows">
+            <pathconvert property="temporary.glossary.database.uri" dirsep="/">
+                <path path="${temporary.glossary.database.file}"/>
+            </pathconvert>
+            <property name="param.glossary.collection" value="glossary.collection=file:///${temporary.glossary.database.uri}"/>
+        </case>
+        <default>
+            <property name="param.glossary.collection" value="glossary.collection=${temporary.glossary.database.file}"/>
+        </default>
+    </switch>
+
+    <available property="glossary.database.available" file="${glossary.database.file}"/>
+
+    <!-- =================================================================== -->
+    <!-- Primary tasks                                                       -->
+    <!-- =================================================================== -->
+
+    <!--
+     실행 순서
+        1. clean-book
+           * 대상 문서만큼 반복 (clean target 참고)
+     -->
+    <target name="common:clean"
+            depends="clean"/>
+
+    <!--
+     실행 순서
+        1. collect-targets-book
+           * 전체 문서만큼 반복 (collect-targets target 참고)
+        2. prepare-temporary-glossary-database
+        3. html-book
+           * 대상 문서만큼 반복 (html target 참고)
+        4. remove-temporary-glossary-database
+        5. prepare-html-auxiliaries
+     -->
+    <target name="common:html"
+            depends="html, remove-temporary-glossary-database, prepare-html-auxiliaries"/>
+
+    <!--
+     실행 순서
+        1. collect-targets-book
+           * 전체 문서만큼 반복 (collect-targets target 참고)
+        2. prepare-temporary-glossary-database
+        3. pdf-book
+           * 대상 문서만큼 반복 (pdf target 참고)
+        4. remove-temporary-glossary-database
+     -->
+    <target name="common:pdf"
+            depends="pdf, remove-temporary-glossary-database"/>
+
+    <target name="common:usage">
+        <echo message="TBD (in common.xml)"/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Secondary tasks                                                     -->
+    <!-- =================================================================== -->
+
+    <target name="clean">
+        <foreach list="${targetdocs}" delimiter="${documents.separator}"
+                 target="clean-book"
+                 param="targetdoc.name"/>
+    </target>
+
+    <target name="collect-targets">
+        <!-- 변환하려는 문서가 어느 문서를 참조할 지 알 수 없으므로 모든 문서(documents)에 대해 collect-targets-book을 수행한다. -->
+        <foreach list="${documents}" delimiter="${documents.separator}"
+                 target="collect-targets-book"
+                 param="targetdoc.name"/>
+    </target>
+
+    <target name="html"
+            depends="collect-targets, prepare-temporary-glossary-database">
+        <foreach list="${targetdocs}" delimiter="${documents.separator}"
+                 target="html-book"
+                 param="targetdoc.name"/>
+    </target>
+
+    <target name="pdf"
+            depends="collect-targets, prepare-temporary-glossary-database">
+        <foreach list="${targetdocs}" delimiter="${documents.separator}"
+                 target="pdf-book"
+                 param="targetdoc.name"/>
+    </target>
+
+    <!--
+     Glossary database에 namespace 정의가 포함되어 있으면 XSL processor에서 단어를 찾지 못하기 때문에
+     namespace 정의를 모두 삭제한 임시 파일이 필요하다.
+     -->
+    <target name="prepare-temporary-glossary-database"
+            if="glossary.database.available">
+        <copy tofile="${temporary.glossary.database.file}"
+              file="${glossary.database.file}"/>
+        <replaceregexp replace=''
+                       flags="g" encoding="UTF-8">
+            <fileset file="${temporary.glossary.database.file}"/>
+            <regexp pattern='\s*xmlns[\w:]*="[^"]+"\s*'/>
+        </replaceregexp>
+    </target>
+
+    <target name="remove-temporary-glossary-database">
+        <delete file="${temporary.glossary.database.file}"/>
+    </target>
+
+    <target name="prepare-html-auxiliaries">
+        <copy todir="${html.output.dir}/images">
+            <fileset dir="${images.dir}/html"/>
+        </copy>
+        <copy todir="${html.output.dir}">
+            <fileset dir="${styles.dir}/html">
+                <include name="*.css"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Tertiary tasks                                                      -->
+    <!-- =================================================================== -->
+
+    <target name="clean-book">
+        <property name="book.in.dir" location="${src.dir}/${targetdoc.name}"/>
+        <property name="book.out.dir" location="${html.output.dir}/${targetdoc.name}"/>
+        <property name="book.out.file" location="${pdf.output.dir}/${targetdoc.name}.pdf"/>
+
+        <delete dir="${book.out.dir}"/>
+        <delete file="${book.out.file}"/>
+        <delete file="${book.in.dir}/target.db"/>
+    </target>
+
+    <target name="collect-targets-book">
+        <property name="book.in.dir" location="${src.dir}/${targetdoc.name}"/>
+
+        <if>
+            <!-- 문서 디렉토리 내의 target.db 파일과 나머지 파일들의 timestamp를 비교한다. -->
+            <uptodate targetfile="${book.in.dir}/target.db">
+                <srcfiles dir="${book.in.dir}" excludes="target.db"/>
+            </uptodate>
+
+            <then>
+                <echo message="DB file is up-to-date: ${book.in.dir}/target.db"/>
+            </then>
+
+            <else>
+                <echo message="Collecting olink targets: ${book.in.dir}"/>
+
+                <!--
+                 Target collection은 HTML 출력물을 기준으로 한다. 즉, HTML 출력물에서 문서 간 참조 링크가 제대로 동작하게 한다.
+                 PDF 출력물에서는 문서 간 참조는 링크로 동작하지 않게 되어 있다.
+
+                 이 작업은 xdocs/ 아래의 문서 디렉토리에서 이루어진다.
+                 -->
+                <java classname="com.icl.saxon.StyleSheet"
+                      fork="true" failonerror="true" maxmemory="512m"
+                      dir="${book.in.dir}">
+                    <!-- Innodata Isogen의 I18N support 라이브러리 사용 -->
+                    <sysproperty key="com.innodata.i18n.home" value="${isoi18n.dir}"/>
+
+                    <!-- xi:include를 사용하여 나누어 놓은 XML 문서를 처리하기 위해 Saxon의 내부적인 XML parser 대신 Xerces를 사용한다. -->
+                    <jvmarg value="-Djavax.xml.parsers.DocumentBuilderFactory=org.apache.xerces.jaxp.DocumentBuilderFactoryImpl"/>
+                    <jvmarg value="-Djavax.xml.parsers.SAXParserFactory=org.apache.xerces.jaxp.SAXParserFactoryImpl"/>
+                    <jvmarg value="-Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration"/>
+
+                    <!--2017-09-06 sds html toc에 제목 나오게... 수정 <arg value="book.xml"/> -->
+                    <arg value="book-html.xml"/>
+                    <arg value="${html.xsl}"/>
+
+                    <!-- target.db 파일만 생성하라는 DocBook XSL parameter -->
+                    <arg value="collect.xref.targets=only"/>
+
+                    <!-- Generated text에 적용할 언어 -->
+                    <arg value="l10n.gentext.default.language=${lang}"/>
+
+                    <!-- RDBMS인지 MMDBMS인지 선택.  tbrdb or tbmdb , uprdb 중에 하나 -->
+                    <arg value="target.product=${target.product}"/>
+
+                    <classpath refid="project.classpath"/>
+                </java>
+
+                <!-- target.db 파일 앞에 자동으로 붙는 잘못된 DOCTYPE 정의 대신 XML 파일 정의가 필요하다. -->
+                <replaceregexp flags="g" encoding="UTF-8">
+                    <fileset file="${book.in.dir}/target.db"/>
+                    <regexp pattern='\s+&lt;!DOCTYPE div\s+PUBLIC "[^"]+" "[^"]+">'/>
+                    <substitution expression='&lt;?xml version="1.0" encoding="UTF-8"?>'/>
+                </replaceregexp>
+            </else>
+        </if>
+    </target>
+
+    <target name="html-book">
+        <property name="book.in.dir" location="${src.dir}/${targetdoc.name}"/>
+        <property name="book.out.dir" location="${html.output.dir}/${targetdoc.name}"/>
+
+        <switch value="${os.family}">
+            <!-- 윈도우 계열에서는 current.docid parameter의 값을 따옴표로 감싸서 전달해야 한다. -->
+            <case value="windows">
+                <property name="param.current.docid" value='current.docid="${targetdoc.name}"'/>
+            </case>
+
+            <default>
+                <property name="param.current.docid" value='current.docid=${targetdoc.name}'/>
+            </default>
+        </switch>
+
+        <if>
+            <!-- HTML 출력물 디렉토리의 index.html 파일과 원본 파일들의 timestamp를 비교한다. -->
+            <uptodate targetfile="${book.out.dir}/index.html">
+                <srcfiles dir="${book.in.dir}" excludes="target.db"/>
+            </uptodate>
+
+            <then>
+                <echo message="HTML files are up-to-date: ${book.out.dir}"/>
+            </then>
+
+            <else>
+                <echo message="Processing HTML transformation: ${book.in.dir}"/>
+
+                <!-- 출력물 변환을 하기 전에 이 문서에 대한 기존 HTML 출력물 디렉토리를 삭제한다. -->
+                <delete dir="${book.out.dir}"/>
+
+                <!-- 출력물 변환 작업은 xdocs/ 아래 문서 디렉토리에서 하지만 결과물은 HTML 출력물 디렉토리에 만들어진다. -->
+                <java classname="com.icl.saxon.StyleSheet"
+                      fork="true" failonerror="true" maxmemory="512m"
+                      dir="${book.in.dir}">
+                    <!-- Innodata Isogen의 I18N support 라이브러리 사용 -->
+                    <sysproperty key="com.innodata.i18n.home" value="${isoi18n.dir}"/>
+
+                    <!-- xi:include를 사용하여 나누어 놓은 XML 문서를 처리하기 위해 Saxon의 내부적인 XML parser 대신 Xerces를 사용한다. -->
+                    <jvmarg value="-Djavax.xml.parsers.DocumentBuilderFactory=org.apache.xerces.jaxp.DocumentBuilderFactoryImpl"/>
+                    <jvmarg value="-Djavax.xml.parsers.SAXParserFactory=org.apache.xerces.jaxp.SAXParserFactoryImpl"/>
+                    <jvmarg value="-Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration"/>
+
+                    <!--2017-09-06 sds html toc에 제목 나오게... 수정 <arg value="book.xml"/> -->
+                    <arg value="book-html.xml"/>                    
+                    <arg value="${html.xsl}"/>
+
+                    <arg value="${param.glossary.collection}"/>
+
+                    <arg value='${param.current.docid}'/>
+                    <arg value="${param.show.comments}"/>
+                    <arg value="${param.draft.mode}"/>
+                    <arg value="base.dir=${book.out.dir}/"/>
+
+                    <!-- Generated text에 적용할 언어 -->
+                    <arg value="l10n.gentext.default.language=${lang}"/>
+
+                    <!-- RDBMS인지 MMDBMS인지 선택.  tbrdb or tbmdb , uprdb 중에 하나 -->
+                    <arg value="target.product=${target.product}"/>
+
+                    <classpath refid="project.classpath"/>
+                </java>
+
+                <!-- IE는 XML 파일 정의에 포함된 인코딩 정의는 무시하고 head/meta 태그를 사용해서 지정한 인코딩만 인식한다. -->
+                <replace dir="${book.out.dir}" encoding="UTF-8">
+                    <include name="*.html"/>
+                    <replacetoken><![CDATA[<head>]]></replacetoken>
+                    <replacevalue><![CDATA[<head><meta xmlns="" http-equiv="Content-Type" content="text/html; charset=utf-8"/>]]></replacevalue>
+                </replace>
+
+                <!--
+                 toc.html 파일 생성 절차
+                    1. index.html을 stripped-index.html로 복사
+                    2. Saxon이 XML namespace를 처리하지 못하므로 stripped-index.html에서 DOCTYPE, namespace 정의 삭제
+                    3. 링크를 클릭하면 "mainFrame"의 페이지가 바뀌도록 stripped-index.html 수정
+                    4. Saxon을 사용, toc.xsl을 적용하여 stripped-index.html을 toc.html로 변환
+                    5. stripped-index.html 파일 삭제
+                 -->
+                <copy tofile="${book.out.dir}/stripped-index.html"
+                      file="${book.out.dir}/index.html"/>
+
+                <replaceregexp replace=''
+                               encoding="UTF-8">
+                    <fileset file="${book.out.dir}/stripped-index.html"/>
+                    <regexp pattern='&lt;!DOCTYPE[^>]+>'/>
+                </replaceregexp>
+
+                <replaceregexp replace=''
+                               flags="g" encoding="UTF-8">
+                    <fileset file="${book.out.dir}/stripped-index.html"/>
+                    <regexp pattern='xmlns="[^"]*"'/>
+                </replaceregexp>
+
+                <replaceregexp replace='&lt;a target="mainFrame" href="'
+                               flags="g" encoding="UTF-8">
+                    <fileset file="${book.out.dir}/stripped-index.html"/>
+                    <regexp pattern='&lt;a\s+href="'/>
+                </replaceregexp>
+
+                <java classname="com.icl.saxon.StyleSheet"
+                      fork="true" failonerror="true" maxmemory="512m"
+                      dir="${book.out.dir}"
+                      output="${book.out.dir}/toc.html">
+                    <arg value="stripped-index.html"/>
+                    <arg value="${toc.xsl}"/>
+
+                    <classpath refid="project.classpath"/>
+                </java>
+
+                <delete file="${book.out.dir}/stripped-index.html"/>
+            </else>
+        </if>
+
+        <if>
+            <!-- 문서 디렉토리에 resources 하위 디렉토리가 있다면 복사한다. -->
+            <available file="${book.in.dir}/resources"/>
+            <then>
+                <copy todir="${book.out.dir}/resources" includeemptydirs="false">
+                    <fileset dir="${book.in.dir}/resources"/>
+                </copy>
+            </then>
+        </if>
+    </target>
+
+    <target name="pdf-book">
+        <property name="book.in.dir" location="${src.dir}/${targetdoc.name}"/>
+        <property name="book.out.file" location="${pdf.output.dir}/${targetdoc.name}.pdf"/>
+
+        <switch value="${os.family}">
+            <!-- 윈도우 계열에서는 current.docid parameter의 값을 따옴표로 감싸서 전달해야 한다. -->
+            <case value="windows">
+                <property name="param.current.docid" value='current.docid="${targetdoc.name}"'/>
+            </case>
+
+            <default>
+                <property name="param.current.docid" value='current.docid=${targetdoc.name}'/>
+            </default>
+        </switch>
+
+        <if>
+            <!-- PDF 파일과 원본 파일들의 timestamp를 비교한다. -->
+            <uptodate targetfile="${book.out.file}">
+                <srcfiles dir="${book.in.dir}" excludes="target.db"/>
+            </uptodate>
+
+            <then>
+                <echo message="PDF file is up-to-date: ${book.out.file}"/>
+            </then>
+
+            <else>
+                <echo message="Processing PDF transformation: ${book.in.dir}"/>
+
+                <!-- 출력물 변환 작업은 xdocs/ 아래 문서 디렉토리에서 수행하고, PDF 출력물 파일을 docs/pdf/ 아래로 옮긴다. -->
+                <java classname="com.renderx.xep.XSLDriver"
+                      fork="true" failonerror="true" maxmemory="512m"
+                      dir="${book.in.dir}">
+                    <!-- xep.xml 설정 파일 위치 -->
+                    <sysproperty key="com.renderx.xep.CONFIG" value="${xep.dir}/xep.xml"/>
+
+                    <!-- Innodata Isogen의 I18N support 라이브러리 사용 -->
+                    <sysproperty key="com.innodata.i18n.home" value="${isoi18n.dir}"/>
+
+                    <!-- xi:include를 사용하여 나누어 놓은 XML 문서를 처리하기 위해 Saxon의 내부적인 XML parser 대신 Xerces를 사용한다. -->
+                    <jvmarg value="-Djavax.xml.parsers.DocumentBuilderFactory=org.apache.xerces.jaxp.DocumentBuilderFactoryImpl"/>
+                    <jvmarg value="-Djavax.xml.parsers.SAXParserFactory=org.apache.xerces.jaxp.SAXParserFactoryImpl"/>
+                    <jvmarg value="-Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration"/>
+
+                    <!-- 불필요한 로그 메시지를 출력하지 않게 하는 XEP switch -->
+                    <arg value="-quiet"/>
+
+                    <!-- 입력으로 받은 DocBook XML 파일에 대한 validation check를 하지 않게 하는 XEP switch -->
+                    <arg value="-valid"/>
+
+                    <arg value="-xml"/> <arg value="book.xml"/>
+                    <arg value="-xsl"/> <arg value="${fo.xsl}"/>
+
+                    <arg value="-param"/> <arg value="${param.glossary.collection}"/>
+                    <arg value="-param"/> <arg value="${param.show.comments}"/>
+                    <arg value="-param"/> <arg value="${param.draft.mode}"/>
+                    <arg value="-param"/> <arg value='${param.current.docid}'/>
+                    <arg value="-param"/> <arg value="draft.watermark.image=${images.dir}/fo/draft.png"/>
+                    <!--arg value="-param"/> <arg value="logo.image=${images.dir}/fo/TiberoCompanyLogo.pdf"/-->
+                    <arg value="-param"/> <arg value="logo.image=${logo.image}"/>
+
+                    <!-- Generated text에 적용할 언어 -->
+                    <arg value="-param"/> <arg value="l10n.gentext.default.language=${lang}"/>
+
+                    <!-- RDBMS인지 MMDBMS인지 선택.  tbrdb or tbmdb , uprdb 중에 하나 -->
+                    <arg value="-param"/> <arg value="target.product=${target.product}"/>
+
+                    <classpath refid="project.classpath"/>
+                </java>
+
+                <move tofile="${book.out.file}" file="${book.in.dir}/book.pdf"/>
+            </else>
+        </if>
+    </target>
+
+</project>
